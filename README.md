@@ -4,6 +4,7 @@ An online grocery store built with PHP and HTML, allowing users to browse produc
 
 ## 📁 Project Structure
 grocery/
+
 ├── index.php # Home page
 
 ├── about.html # About page
@@ -19,15 +20,25 @@ grocery/
 ├── login.php # User login
 
 ├── register.php # User registration
+
 ├── logout.php # User logout
+
 ├── cart.php # Shopping cart page
+
 ├── add_to_cart.php # Add item to cart
+
 ├── remove_cart.php # Remove item from cart
+
 ├── update_cart.php # Update cart quantities
+
 ├── checkout.php # Checkout process
+
 ├── db_connection.php # PostgreSQL database connection
+
 ├── css/ # Stylesheets
+
 ├── js/ # JavaScript files
+
 └── images/ # Image assets
 
 
