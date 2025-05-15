@@ -35,9 +35,9 @@ grocery/
 
 ├── db_connection.php # PostgreSQL database connection
 
-├── css/ # Stylesheets
+├── styles.css # CSS file
 
-├── js/ # JavaScript files
+├── script.js # JavaScript file
 
 └── images/ # Image assets
 
