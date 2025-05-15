@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables - GroceryHub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e8f5e9;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .header {
+            background: #388e3c;
+            color: white;
+            padding: 15px;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: #2e7d32;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: #1b5e20;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .product form {
+            margin-top: 10px;
+        }
+
+        .quantity {
+            width: 50px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .add-to-cart {
+            padding: 10px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #1b5e20;
+        }
+
+        .cart-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2e7d32;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-button:hover {
+            background: #1b5e20;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+    </style>
+    <script>
+    function addToCart(name, price, quantity) {
+    if (quantity <= 0) {
+        alert("Please enter a valid quantity");
+        return;
+    }
+
+    let formData = new URLSearchParams();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("quantity", quantity);
+
+    fetch("add_to_cart.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString()
+    })
+    .then(response => response.json()) // Expect JSON
+    .then(data => {
+        if (data.success) {
+            alert(data.success); // Shows only the success message
+        } else {
+            alert(data.error); // Shows only the error message
+        }
+    })
+    .catch(error => {
+        console.error("Fetch Error:", error);
+        alert("Failed to add item to cart.");
+    });
+    }
+
+    </script>
+</head>
+<body>
+    <div class="header">Fresh Vegetables</div>
+    <div class="navbar">
+        <a href="index.php">Home</a>
+        <a href="fruits.html">Fruits</a>
+        <a href="dairy.html">Dairy</a>
+        <a href="bakery.html">Bakery</a>
+    </div>
+    <div class="container">
+        <div class="product">
+            <img src="./images/vegetables/tomato.jpg" alt="Tomato">
+            <h3>Tomato</h3>
+            <p>₹40/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="tomatoQty">
+            <button onclick="addToCart('Tomato', 40, document.getElementById('tomatoQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="./images/vegetables/potato.jpg" alt="Potato">
+            <h3>Potato</h3>
+            <p>₹30/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="potatoQty">
+            <button onclick="addToCart('Potato', 30, document.getElementById('potatoQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="./images/vegetables/onion.jpg" alt="Onion">
+            <h3>Onion</h3>
+            <p>₹60/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="onionQty">
+            <button onclick="addToCart('Onion', 60, document.getElementById('onionQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="./images/vegetables/capsicum.jpg" alt="capsicum">
+            <h3>Capsicum</h3>
+            <p>₹60/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="capsicumQty">
+            <button onclick="addToCart('Capsicum', 60, document.getElementById('capsicumQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="./images/vegetables/cabbage.jpg" alt="Cabbage">
+            <h3>Cabbage</h3>
+            <p>₹60/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="cabbageQty">
+            <button onclick="addToCart('Cabbage', 60, document.getElementById('cabbageQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="./images/vegetables/cauliflower.jpg" alt="Cauliflower">
+            <h3>Cauliflower</h3>
+            <p>₹50/kg</p>
+            <input type="number" class="quantity" value="1" min="1" id="cauliflowerQty">
+            <button onclick="addToCart('Cauliflower', 50, document.getElementById('cauliflowerQty').value)" class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+    <a href="cart.php" class="cart-button">🛒 View Cart</a>
+    <div class="footer">
+        &copy; 2025 GroceryHub. All rights reserved.
+    </div>
+</body>
+</html>

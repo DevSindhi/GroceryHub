@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GroceryHub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #d4edda, #a8e6cf);
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #1e8449;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #d4edda;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 20px;
+        }
+
+        .hero .container {
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #1e8449;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .cta {
+            margin-top: 30px;
+        }
+
+        .cta a {
+            text-decoration: none;
+            background: #1e8449;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .cta a:hover {
+            background: #145a32;
+            transform: scale(1.05);
+        }
+
+
+        /* Customer Reviews */
+        .reviews {
+            margin-bottom: 80px;
+            margin-top: 120px;
+        }
+
+        .reviews h2 {
+            font-size: 2.5em;
+            color: #1e8449;
+        }
+
+        .review {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .review p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to GroceryHub</h1>
+            <p>At GroceryHub, we are dedicated to bringing fresh, high-quality groceries right to your doorstep.</p>
+            <p>Our mission is to provide an effortless shopping experience with a wide selection of fresh vegetables, fruits, and dairy products.</p>
+            <p>With GroceryHub, you can trust that every product is hand-picked to ensure the best quality for you and your family.</p>
+            <div class="cta">
+                <a href="index.php">Explore Our Website</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="review">
+            <p><strong>⭐⭐⭐⭐⭐</strong></p>
+            <p>"GroceryHub has changed the way I shop! The fruits and vegetables are always fresh, and delivery is super fast!"</p>
+            <p>- Priya Sharma</p>
+        </div>
+        <div class="review">
+            <p><strong>⭐⭐⭐⭐⭐</strong></p>
+            <p>"Fantastic customer service and a great selection of organic products. Highly recommend!"</p>
+            <p>- Amit Verma</p>
+        </div>
+    </section>
+
+</body>
+</html>
