@@ -5,12 +5,19 @@ An online grocery store built with PHP and HTML, allowing users to browse produc
 ## 📁 Project Structure
 grocery/
 ├── index.php # Home page
+
 ├── about.html # About page
+
 ├── fruits.html # Fruits category
+
 ├── vegetables.html # Vegetables category
+
 ├── bakery.html # Bakery category
+
 ├── dairy.html # Dairy category
+
 ├── login.php # User login
+
 ├── register.php # User registration
 ├── logout.php # User logout
 ├── cart.php # Shopping cart page
