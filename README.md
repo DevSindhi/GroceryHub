@@ -9,6 +9,8 @@ grocery/
 
 ├── about.html # About page
 
+├── orders.php # Orders page
+
 ├── fruits.html # Fruits category
 
 ├── vegetables.html # Vegetables category
@@ -50,7 +52,7 @@ grocery/
 - 📦 Category-based item browsing
 - 👤 User authentication (Login/Register)
 - 📱 Responsive layout with clean UI
-- 💳 Checkout system (basic)
+- 💳 Checkout system and you can also check your orders
 - 🔐 PostgreSQL-based secure backend
 
 ---
