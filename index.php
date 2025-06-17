@@ -35,8 +35,8 @@ session_start();
     
             <!-- Navigation Links -->
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="./index.php" class="nav-link px-2 text-dark">Home</a></li>
                 <li><a href="./about.html" class="nav-link px-2 text-dark">About</a></li>
+                <li><a href="./orders.php" class="nav-link px-2 text-dark">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories
                     </a>
@@ -81,7 +81,7 @@ session_start();
                     <img src="./images/vegetables.jpg" class="d-block w-100 carousel-img" alt="Fresh Vegetables">
                     <div class="carousel-caption">
                         <h5>Fresh Vegetables</h5>
-                        <p>Get the freshest products directly from farms.</p>
+                        <p>Get the freshest products directly from stores.</p>
                     </div>
                 </div>
         
