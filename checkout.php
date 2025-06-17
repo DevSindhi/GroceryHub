@@ -26,29 +26,26 @@ foreach ($cart_items as $item) {
 }
 
 // Check if the form is submitted
-$order_placed = false;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = trim($_POST['name']);
     $address = trim($_POST['address']);
-    $payment = $_POST['payment_method'];
 
     // Insert the order into the database with the user_id
-    $insert_order = $conn->prepare("INSERT INTO orders (user_id, name, address, payment_method, total_price) VALUES (?, ?, ?, ?, ?)");
+    $insert_order = $conn->prepare("INSERT INTO orders (user_id, name, address, total_price) VALUES (?, ?, ?, ?)");
     $insert_order->bindParam(1, $user_id, PDO::PARAM_INT); // Binding user_id
     $insert_order->bindParam(2, $name, PDO::PARAM_STR);
     $insert_order->bindParam(3, $address, PDO::PARAM_STR);
-    $insert_order->bindParam(4, $payment, PDO::PARAM_STR);
-    $insert_order->bindParam(5, $total_price, PDO::PARAM_STR);
+    $insert_order->bindParam(4, $total_price, PDO::PARAM_STR);
 
     // Execute the order insertion
     if ($insert_order->execute()) {
-        $order_placed = true;
-        // Clear the cart only after successful order placement
+        // Order placed successfully
         $conn->prepare("DELETE FROM cart WHERE user_id = :user_id")->execute([':user_id' => $user_id]);
+        header("Location: orders.php");
+        exit;
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Checkout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Your same styles remain unchanged */
         body {
             font-family: 'Arial', sans-serif;
             background: #f4f9f4;
@@ -74,7 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             border-radius: 10px;
             margin-top: 30px;
         }
-        h2 { color: #27ae60; }
+
+        h2{
+            color: #27ae60; 
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -89,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             background: #27ae60;
             color: white;
         }
-        .checkout-form input, .checkout-form select {
-            width: 100%;
+        .checkout-form input {
+            width: 95%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
@@ -106,44 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             border-radius: 5px;
             width: 100%;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 400px;
-            position: relative;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .modal button {
-            background: #27ae60;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .modal button:hover {
-            background: #219150;
+        .btn:hover {
+            background: #d78d0d;
         }
     </style>
 </head>
@@ -172,23 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <form method="POST" class="checkout-form">
         <input type="text" name="name" placeholder="Full Name" required>
         <input type="text" name="address" placeholder="Full Address" required>
-        <select name="payment_method">
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            <option value="Card Payment">Card Payment</option>
-        </select>
         <button type="submit" class="btn">Place Order</button>
     </form>
 </div>
-
-<?php if ($order_placed): ?>
-    <div id="orderSuccessModal" class="modal" style="display: flex;">
-        <div class="modal-content">
-            <h2>🎉 Order Placed Successfully! </h2>
-            <p>Thank you for shopping with us. Your order has been placed successfully.</p>
-            <button onclick="window.location.href='index.php'">Continue Shopping</button>
-        </div>
-    </div>
-<?php endif; ?>
 
 </body>
 </html>
