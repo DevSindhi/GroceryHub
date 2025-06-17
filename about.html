@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - GroceryHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* General Styles */
         body {
@@ -26,18 +29,6 @@
             z-index: 1000;
         }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-
-        .navbar a:hover {
-            color: #d4edda;
-        }
-
         /* Hero Section */
         .hero {
             display: flex;
@@ -48,7 +39,7 @@
         }
 
         .hero .container {
-            max-width: 900px;
+            max-width: 1100px;
             background: rgba(255, 255, 255, 0.9);
             padding: 40px;
             border-radius: 10px;
@@ -86,33 +77,86 @@
             transform: scale(1.05);
         }
 
-
-        /* Customer Reviews */
-        .reviews {
-            margin-bottom: 80px;
-            margin-top: 120px;
+        /* OUR STATS SECTION */
+        .stats-section {
+            background: linear-gradient(to right, #d4edda, #a8e6cf);
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        .reviews h2 {
-            font-size: 2.5em;
+        .stats-card {
+            background-color: #ffffff;
+            padding: 40px 25px;
+            border-radius: 12px;
+            max-width: 1100px;
+            width: 100%;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stats-title {
+            font-size: 32px;
             color: #1e8449;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
 
-        .review {
-            background: white;
-            padding: 20px;
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            flex: 1 1 22%;
+            background-color: #f9f9f9;
             border-radius: 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            margin: 20px auto;
+            padding: 25px 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
 
-        .review p {
-            font-size: 1.1em;
-            line-height: 1.5;
+        .stat-item:hover {
+            transform: translateY(-5px);
         }
+
+        .stat-item i {
+            font-size: 40px;
+            color: #1e8449;
+            margin-bottom: 12px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* Responsive behavior */
+        @media (max-width: 768px) {
+            .stats-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-item {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
     <!-- Hero Section -->
@@ -120,28 +164,57 @@
         <div class="container">
             <h1>Welcome to GroceryHub</h1>
             <p>At GroceryHub, we are dedicated to bringing fresh, high-quality groceries right to your doorstep.</p>
-            <p>Our mission is to provide an effortless shopping experience with a wide selection of fresh vegetables, fruits, and dairy products.</p>
-            <p>With GroceryHub, you can trust that every product is hand-picked to ensure the best quality for you and your family.</p>
+            <p>Our mission is to provide an effortless shopping experience with a wide selection of fresh vegetables,
+                fruits, and dairy products.</p>
+            <p>With GroceryHub, you can trust that every product is hand-picked to ensure the best quality for you and
+                your family.</p>
             <div class="cta">
                 <a href="index.php">Explore Our Website</a>
             </div>
         </div>
     </section>
 
-    <!-- Customer Reviews -->
-    <section class="reviews">
-        <h2>What Our Customers Say</h2>
-        <div class="review">
-            <p><strong>⭐⭐⭐⭐⭐</strong></p>
-            <p>"GroceryHub has changed the way I shop! The fruits and vegetables are always fresh, and delivery is super fast!"</p>
-            <p>- Priya Sharma</p>
-        </div>
-        <div class="review">
-            <p><strong>⭐⭐⭐⭐⭐</strong></p>
-            <p>"Fantastic customer service and a great selection of organic products. Highly recommend!"</p>
-            <p>- Amit Verma</p>
+    <!-- OUR STATS SECTION -->
+    <section class="stats-section">
+        <div class="stats-card">
+            <h2 class="stats-title">Our Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div class="stat-number">450</div>
+                    <p>Orders Delivered</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <div class="stat-number">400</div>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-store"></i>
+                    <div class="stat-number">22</div>
+                    <p>Products Available</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-star"></i>
+                    <div class="stat-number">350</div>
+                    <p>5-Star Ratings</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- jQuery and Counter-Up -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    <script>
+        $('.stat-number').counterUp({
+            delay: 10,
+            time: 1000
+        });
+    </script>
+
 </body>
+
 </html>
